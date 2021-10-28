@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/userDetailCordinatorLayout"
         android:layout_width="match_parent"
@@ -14,31 +15,35 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <ImageView
                     android:id="@+id/expandedImage"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:contentDescription="@string/app_name"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.7" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/userDetailToolbar"
                     android:layout_width="match_parent"
-                    app:titleTextColor="@color/white"
-                    app:title="@string/userDetail"
-                    app:layout_scrollFlags="scroll"
-                    android:layout_height="?android:attr/actionBarSize"
+                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:tint="@color/white"
+                    android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -46,7 +51,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.cardview.widget.CardView
@@ -61,144 +66,217 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/userDetailCordinatorLayout">
 
-
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailUserNameTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailEmailTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailIdTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailPhoneNumberTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailWebsiteTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailAddressTitleTextView"
-                        android:layout_width="match_parent"
+                        android:id="@+id/detailFirstNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/first_name"
                         android:textStyle="bold"
-                        tools:text="Placeholder"
-                        android:text="@string/address"
-                        android:textAlignment="center"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailFirstNameTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/userDetailFirstNameTextView" />
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailStreetTextView"
-                        android:layout_width="match_parent"
+                        android:id="@+id/userDetailFirstNameTextView"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toTopOf="@+id/userDetailLastNameTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/detailFirstNameLabel"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailSuiteTextView"
-                        android:layout_width="match_parent"
+                        android:id="@+id/detailLastNameLabel"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginStart="16dp"
+                        android:text="@string/last_name"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailLastNameTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/userDetailLastNameTextView" />
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailCityTextView"
-                        android:layout_width="match_parent"
+                        android:id="@+id/userDetailLastNameTextView"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginStart="@dimen/uderDetailMargin"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@+id/userDetailFirstNameTextView"
+                        app:layout_constraintStart_toEndOf="@id/detailLastNameLabel"
+                        app:layout_constraintTop_toBottomOf="@id/userDetailFirstNameTextView" />
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:id="@+id/userDetailZipCodeTextView"
-                        android:layout_width="match_parent"
+                        android:id="@+id/detailEmailLabel"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginStart="16dp"
+                        android:text="@string/email"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailEmailTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/userDetailEmailTextView" />
+
+                    <TextView
+                        android:id="@+id/userDetailEmailTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/userDetailLastNameTextView"
+                        app:layout_constraintStart_toEndOf="@+id/detailEmailLabel"
+                        app:layout_constraintTop_toBottomOf="@id/userDetailLastNameTextView" />
+
+                    <TextView
+                        android:id="@+id/detailPhonelLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/phoneLabel"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailPhoneNumberTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/userDetailPhoneNumberTextView" />
+
+                    <TextView
+                        android:id="@+id/userDetailPhoneNumberTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/uderDetailMargin"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/userDetailEmailTextView"
+                        app:layout_constraintStart_toEndOf="@id/detailPhonelLabel"
+                        app:layout_constraintTop_toBottomOf="@id/userDetailEmailTextView" />
+
+                    <TextView
+                        android:id="@+id/detailCpfLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/cpf"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/userDetailCpfTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/userDetailCpfTextView" />
+
+                    <TextView
+                        android:id="@+id/userDetailCpfTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/uderDetailMargin"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/userDetailPhoneNumberTextView"
+                        app:layout_constraintStart_toEndOf="@id/detailCpfLabel"
+                        app:layout_constraintTop_toBottomOf="@id/userDetailPhoneNumberTextView" />
 
                     <LinearLayout
+                        android:id="@+id/detailButtonsLinearLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        app:layout_constraintEnd_toEndOf="@id/userDetailCpfTextView"
+                        app:layout_constraintStart_toStartOf="@+id/detailCpfLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/userDetailCpfTextView">
 
                         <Button
-                            android:layout_marginStart="@dimen/uderDetailMargin"
-                            android:layout_marginEnd="@dimen/uderDetailMargin"
                             android:id="@+id/datePickerBtn"
+                            style="?android:attr/buttonBarButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/pick_date_and_time"
+                            android:layout_marginStart="16dp"
                             android:layout_weight="1"
-                            style="?android:attr/buttonBarButtonStyle" />
+                            android:text="@string/pick_date_and_time" />
 
                         <Button
-                            android:layout_marginStart="@dimen/uderDetailMargin"
-                            android:layout_marginEnd="@dimen/uderDetailMargin"
-                            android:id="@+id/mapBtn"
+                            android:id="@+id/shareBtn"
+                            style="?android:attr/buttonBarButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/map"
                             android:layout_weight="1"
-                            style="?android:attr/buttonBarButtonStyle" />
+                            android:text="@string/share" />
+
+                        <Button
+                            android:id="@+id/cameraBtn"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Camera" />
+
+                        <Button
+                            android:id="@+id/mapBtn"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/map" />
 
                     </LinearLayout>
 
                     <TextView
-                        android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:layout_width="match_parent"
-                        android:id="@+id/datePickerText"
-                        android:layout_height="wrap_content"/>
+                        android:id="@+id/detaildateLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date_of_birth"
+                        android:textStyle="bold"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toTopOf="@id/datePickerText"
+                        app:layout_constraintBottom_toBottomOf="@id/datePickerText"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
+                        android:id="@+id/datePickerText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/uderDetailMargin"
-                        android:layout_marginEnd="@dimen/uderDetailMargin"
-                        android:layout_width="match_parent"
-                        android:id="@+id/timePickerText"
-                        android:layout_height="wrap_content"/>
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/detailButtonsLinearLayout"
+                        app:layout_constraintStart_toEndOf="@id/detaildateLabel"
+                        app:layout_constraintTop_toBottomOf="@id/detailButtonsLinearLayout" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/detailTimeLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hour_of_birth"
+                        android:textStyle="bold"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toTopOf="@id/timePickerText"
+                        app:layout_constraintBottom_toBottomOf="@id/timePickerText"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/timePickerText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/uderDetailMargin"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/datePickerText"
+                        app:layout_constraintStart_toEndOf="@id/detailTimeLabel"
+                        app:layout_constraintTop_toBottomOf="@id/datePickerText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
         </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

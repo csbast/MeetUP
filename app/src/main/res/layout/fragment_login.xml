@@ -15,10 +15,11 @@
 
             <ImageView
                 android:id="@+id/logo_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/login_btn_icon_margin"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline2"
@@ -29,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/cs_tech"
+                android:text="@string/meetup"
                 android:textColor="#3A60AA"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -37,87 +38,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logo_image" />
 
-
-            <Button
-                android:orientation="horizontal"
-                android:background="@color/blue"
-                android:id="@+id/login_button"
-                style="@style/ButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:text="@string/login"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/forgot_your_password_textView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fb_btn" />
-
-            <RelativeLayout
-                android:id="@+id/fb_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="#B2B8C5"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/login_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/google_btn">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        style="@style/login_img_style"
-                        android:layout_width="@dimen/login_btn_icon_size"
-                        android:layout_height="@dimen/login_btn_icon_size"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/facebook"
-                        android:contentDescription="@string/app_name" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:text="@string/facebook_login"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/fb_login_button"
-                    style="@style/ButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:visibility="invisible" />
-            </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/google_btn"
                 style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="#EFF0F1"
-
+                android:background="@drawable/round_btn_google"
                 android:gravity="center_vertical"
+                app:circularflow_defaultRadius="8dp"
                 app:layout_constraintBottom_toTopOf="@id/fb_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/app_name_textView"
                 app:layout_constraintVertical_chainStyle="packed">
 
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/googleButton"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true" />
+
                 <RelativeLayout
-                    android:id="@+id/google_sign"
+                    android:id="@+id/google_button_fake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#E9EBEF"
                     android:gravity="center_vertical">
 
                     <ImageView
@@ -133,17 +77,103 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:gravity="center"
-                        android:text="Google Sign"
+                        android:text="@string/google_sign"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fb_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_btn_facebook"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:circularflow_defaultRadius="8dp"
+                app:layout_constraintBottom_toTopOf="@id/login_email_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/google_btn">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/fb_login_button"
+                    style="@style/ButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true" />
+
+                <RelativeLayout
+                    android:id="@+id/fb_login_button_fake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        style="@style/login_img_style"
+                        android:layout_width="@dimen/login_btn_icon_size"
+                        android:layout_height="@dimen/login_btn_icon_size"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/facebook" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="@string/facebook_login"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
 
-                <com.google.android.gms.common.SignInButton
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_button_size"
-                    android:background="#1575D5"
-                    android:visibility="invisible" />
             </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_email_btn"
+                style="@style/ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_btn_login"
+                android:padding="16dp"
+                android:text="@string/login_with_email"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/forgot_your_password_textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fb_btn" />
+
+            <TextView
+                android:id="@+id/or_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/or"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/login_anonymously"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/login_email_btn" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_anonymously"
+                style="@style/ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_btn_anonymously"
+                android:padding="16dp"
+                android:text="@string/login_anonymously"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/forgot_your_password_textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/or_tv" />
 
 
             <TextView
@@ -153,8 +183,8 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/forgot_your_password"
                 app:layout_constraintBottom_toTopOf="@+id/dont_have_account_textView"
-                app:layout_constraintEnd_toEndOf="@+id/login_button"
-                app:layout_constraintStart_toStartOf="@+id/login_button" />
+                app:layout_constraintEnd_toEndOf="@+id/login_email_btn"
+                app:layout_constraintStart_toStartOf="@+id/login_email_btn" />
 
             <TextView
                 android:id="@+id/dont_have_account_textView"

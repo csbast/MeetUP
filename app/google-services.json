@@ -22,6 +22,30 @@
           }
         },
         {
+          "client_id": "960340143606-mkbrrknptugjr7fg452i7pp3it52hjgd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meetup",
+            "certificate_hash": "e4b7a7157667efcb0a8adcd39b66eed106de8357"
+          }
+        },
+        {
+          "client_id": "960340143606-ni0o6e444g9te8am47g9c5b8hs5mpf80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meetup",
+            "certificate_hash": "0b75a8e35f5f65e8fe600f8f9b06b411aace7354"
+          }
+        },
+        {
+          "client_id": "960340143606-oarmelp3get7l61e3idjcv9tcm10bjod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meetup",
+            "certificate_hash": "e039e77834384f5e463b248b24814eff070446c4"
+          }
+        },
+        {
           "client_id": "960340143606-hh2k6r1dtrv29ri4t15ir9bdn5ukal5l.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,9 +1,10 @@
-package com.example.meetup.fragments
+package com.example.meetup.presentation
 
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +12,21 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.meetup.R
 import com.example.meetup.databinding.FragmentRegistrationBinding
 import com.example.meetup.util.AutoMask.Companion.mask
 import com.example.meetup.util.CpfValidator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class RegistrationFragment : Fragment(R.layout.fragment_registration) {
+class SignUpFragment : Fragment(R.layout.fragment_registration) {
     private lateinit var binding: FragmentRegistrationBinding
+    private lateinit var mAuth: FirebaseAuth
+
+    companion object {
+        private const val TAG = "SignupFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +35,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_registration, container, false
         )
-        setupToolbar()
+        mAuth = FirebaseAuth.getInstance()
         setupListeners()
         return binding.root
     }
@@ -49,14 +57,9 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         binding.registerButton.setOnClickListener {
             if (isValidEmail() and isValidPassword() and isValidPhoneNumber() and isValidCpf() and isValidFirstName() and isValidLastName()) {
                 saveData()
-                findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+                findNavController().popBackStack()
             }
         }
-    }
-
-    private fun setupToolbar() {
-        val toolbar = binding.registrationFragmentToolBar
-        toolbar.setupWithNavController(findNavController())
     }
 
     private fun isValidFirstName(): Boolean {
@@ -152,7 +155,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         val senha = binding.registrationPasswordTextInputLayout.editText?.text.toString()
         val passwordVal = "^" + "(?=.*[0-9])" +         //at least 1 digit
                 "(?=.*[a-zA-Z])" +  //any letter
-                ".{3,8}" +  // between 3 and 8 digits
+                ".{6,8}" +  // between 3 and 8 digits
                 "$"
 
         return when {
@@ -161,7 +164,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                     getString(R.string.erro_field_cannot_be_empty)
                 false
             }
-            senha.length < 3 -> {
+            senha.length < 6 -> {
                 binding.registrationPasswordTextInputLayout.error =
                     getString(R.string.erro_password_too_short)
                 false
@@ -200,12 +203,31 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
+    private fun createFirebaseUser() {
+        val password = binding.registrationPasswordTextInputLayout.editText?.text.toString()
+        val email = binding.registrationEmailTextInputLayout.editText?.text.toString()
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("###", "createUserWithEmail:success")
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("###", "createUserWithEmail:failure", task.exception)
+
+                }
+            }
+    }
+
     private fun saveData() {
         val firstName = binding.firstNameTextInputLayout.editText?.text.toString()
         val lastName = binding.lastNameTextInputLayout.editText?.text.toString()
         val email = binding.registrationEmailTextInputLayout.editText?.text.toString()
         val phoneNumber = binding.phoneNumberTextInputLayout.editText?.text.toString()
         val cpf = binding.cpfEditText.text.toString()
+
+        createFirebaseUser()
+        saveUserToDb(firstName, lastName, email, phoneNumber, cpf)
 
         val sharedPreferences =
             requireActivity().getSharedPreferences(email, Context.MODE_PRIVATE)
@@ -220,5 +242,30 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }.apply()
 
         Toast.makeText(context, "Registration Successful", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveUserToDb(
+        firstName: String,
+        lastName: String,
+        email: String,
+        phoneNumber: String,
+        cpf: String
+    ) {
+        val db = Firebase.firestore
+        val user = hashMapOf(
+            "first" to firstName,
+            "last" to lastName,
+            "email" to email,
+            "phone" to phoneNumber,
+            "cpf" to cpf
+        )
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
     }
 }

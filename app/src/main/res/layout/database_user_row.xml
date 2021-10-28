@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="16dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/listRowImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/firstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/listRowImage"
+                    android:background="@color/semiTransparentBackground"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/firstName"
+            app:layout_constraintTop_toBottomOf="@+id/firstName">
+
+<!--            <TextView-->
+<!--                android:id="@+id/firstName"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/RowTextStyle"-->
+<!--                android:text="@string/name"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/userName"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_chainStyle="packed"-->
+<!--                tools:text="Caio de Souza Bastos " />-->
+
+            <TextView
+                android:id="@+id/firstNameLabel"
+                style="@style/RowTextStyle"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/idTextViewLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/databaseFirstNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="DADADADA"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/firstNameLabel"
+                app:layout_constraintStart_toEndOf="@id/firstNameLabel"
+                app:layout_constraintTop_toTopOf="@id/firstNameLabel"/>
+
+            <TextView
+                android:id="@+id/idTextViewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                style="@style/RowTextStyle"
+                app:layout_constraintBottom_toTopOf="@+id/emailLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
+
+            <TextView
+                android:id="@+id/databaseLastNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="DADADADA"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/idTextViewLabel"
+                app:layout_constraintStart_toEndOf="@id/idTextViewLabel"
+                app:layout_constraintTop_toTopOf="@id/idTextViewLabel"/>
+
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                style="@style/RowTextStyle"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTextViewLabel" />
+
+            <TextView
+                android:id="@+id/databaseEmailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="DADADADA"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/emailLabel"
+                app:layout_constraintStart_toEndOf="@id/emailLabel"
+                app:layout_constraintTop_toTopOf="@id/emailLabel"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

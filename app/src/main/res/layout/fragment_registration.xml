@@ -14,49 +14,29 @@
             android:layout_height="wrap_content"
             tools:context=".SecondActivity">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/registrationFragmentToolBar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="#4477DF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:title="@string/sign_up"
-                app:titleTextColor="#FFF" />
 
-            <TextView
-                android:id="@+id/registerScreenTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginBottom="32dp"
-                android:text="@string/create_account"
-                android:textAllCaps="false"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/firstNameTextInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registrationFragmentToolBar" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/firstNameTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                style="@style/RegistrationTextInputStyle"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/lastNameTextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerScreenTitle">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registrationFirstNameEditText"
                     android:layout_width="match_parent"
+                    style="@style/RegistrationTextInputStyle"
+                    android:background="@drawable/outlined_box"
                     android:layout_height="wrap_content"
                     android:hint="@string/first_name"
                     android:singleLine="true" />
@@ -67,6 +47,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/registrationEmailTextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/firstNameTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -77,6 +59,8 @@
                     android:id="@+id/registrationLastNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/RegistrationTextInputStyle"
+                    android:background="@drawable/outlined_box"
                     android:hint="@string/last_name"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -86,6 +70,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/phoneNumberTextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/lastNameTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -97,6 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
+                    style="@style/RegistrationTextInputStyle"
+                    android:background="@drawable/outlined_box"
                     android:inputType="textEmailAddress"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -106,6 +94,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/cpfTextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/registrationEmailTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -116,7 +106,9 @@
                     android:id="@+id/registrationPhoneNumberEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/RegistrationTextInputStyle"
                     android:hint="@string/phone_number"
+                    android:background="@drawable/outlined_box"
                     android:inputType="number"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -126,6 +118,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/registrationPasswordTextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/phoneNumberTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -136,7 +130,9 @@
                     android:id="@+id/cpfEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/RegistrationTextInputStyle"
                     android:hint="@string/cpf"
+                    android:background="@drawable/outlined_box"
                     android:inputType="number"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -146,6 +142,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/registerButton"
                 app:layout_constraintEnd_toEndOf="@+id/cpfTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -156,7 +154,9 @@
                     android:id="@+id/registrationPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/RegistrationTextInputStyle"
                     android:hint="@string/password"
+                    android:background="@drawable/outlined_box"
                     android:inputType="textPassword"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -169,7 +169,6 @@
                 android:layout_marginBottom="16dp"
                 android:padding="16dp"
                 android:text="@string/register"
-                app:backgroundTint="#4477DF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/registrationPasswordTextInputLayout"
                 app:layout_constraintHorizontal_bias="0.5"

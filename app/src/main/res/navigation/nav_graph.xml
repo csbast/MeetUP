@@ -3,62 +3,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.meetup.fragments.LoginFragment"
+        android:name="com.example.meetup.presentation.SignInFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_recyclerViewFragment"
-            app:destination="@id/recyclerViewFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment"
+            app:destination="@id/recyclerViewFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_emailLoginFragment"
+            app:destination="@id/emailLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/recyclerViewFragment"
-        android:name="com.example.meetup.fragments.RecyclerViewFragment"
-        android:label="RecyclerView"
-        tools:layout="@layout/fragment_recyclerview" >
+        android:name="com.example.meetup.presentation.UsersListFragment"
+        android:label="@string/users"
+        tools:layout="@layout/fragment_userslist" >
         <action
             android:id="@+id/action_recyclerViewFragment_to_userDetailFragment"
             app:destination="@id/userDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
-        android:name="com.example.meetup.fragments.UserDetailFragment"
+        android:name="com.example.meetup.presentation.UserDetailFragment"
         android:label="Users Detail"
         tools:layout="@layout/fragment_user_detail">
         <argument
             android:name="userObject"
-            app:argType="com.example.meetup.model.UserComplete" />
-        <action
-            android:id="@+id/action_userDetailFragment_to_recyclerViewFragment"
-            app:destination="@id/recyclerViewFragment" />
+            app:argType="com.example.meetup.model.FirestoreUser" />
         <action
             android:id="@+id/action_userDetailFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.meetup.fragments.RegistrationFragment"
-        android:label="Sign Up"
-        tools:layout="@layout/fragment_registration">
-        <action
-            android:id="@+id/action_registrationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
+        android:name="com.example.meetup.presentation.SignUpFragment"
+        android:label="SignUp"
+        tools:layout="@layout/fragment_registration"/>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.example.meetup.fragments.MapsFragment"
-        android:label="fragment_maps"
+        android:name="com.example.meetup.presentation.MapsFragment"
+        android:label="@string/maps"
         tools:layout="@layout/fragment_maps" >
         <argument
             android:name="userObject"
-            app:argType="com.example.meetup.model.UserComplete" />
+            app:argType="com.example.meetup.model.FirestoreUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailLoginFragment"
+        android:name="com.example.meetup.presentation.EmailLoginFragment"
+        android:label="@string/signin"
+        tools:layout="@layout/fragment_email_login" >
+        <action
+            android:id="@+id/action_emailLoginFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
+        <action
+            android:id="@+id/action_emailLoginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.meetup.presentation.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
     </fragment>
 </navigation>

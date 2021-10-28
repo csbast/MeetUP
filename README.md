@@ -75,70 +75,79 @@
 
 ### 11. Salvar os usuário dentro do banco de dados
 - [x] Obter os usuários da API
-- [ ] Salvar os usuários da API dentro do Firebase
+- [ ] Salvar os usuários da API dentro do Firebase quando fizer SignUp
 - [ ] Alterar codigo para obter a lista de usuario do Firebase
 
 ### 12. Adicionar login por rede social
-- [ ] Na tela de login deve ter a opção de entrar com Facebook
-- [ ] Na tela de login deve ter a opção de entrar com Google
-- [ ] Na tela de login deve ter a opção de entrar com Email
-- [ ] Caso botão clicado seja e-mail, ele direciona para um nova tela para inserir email e senha
+- [x] Na tela de login deve ter a opção de entrar com Facebook
+- [x] Na tela de login deve ter a opção de entrar com Google
+- [x] Na tela de login deve ter a opção de entrar com Email
+- [x] Caso botão clicado seja e-mail, ele direciona para um nova tela para inserir email e senha
     
 <img width="250" alt="Tela de login" src="https://user-images.githubusercontent.com/12714219/126506469-07e6c1e5-456c-4459-bc44-9276a9b9151f.png">
 
     
 ### 13. Melhorar o layout
 - Geral
-- [ ] Trocar cor das setas de retorno para a cor do texto da toolbar ("Branco")
-- [ ] Pesquisar todas telas com toolbar (Usar thema do app)
+- [x] Trocar cor das setas de retorno para a cor do texto da toolbar ("Branco")
+- [x] Pesquisar todas telas com toolbar (Usar thema do app)
 
-- Login
-- [ ] Sem toolbar
-- [ ] O logo deve iniciar a 20% do tamanho da tela
-- [ ] O bottom finaliza 20% do tamanho da tela
-- [ ] O hint dos campos estao muito pra dentro
-- [ ] Testar colcar campos em box
+- Login Home
+- [x] Sem toolbar
+- [x] O logo deve iniciar a 20% do tamanho da tela
+- [x] Aumentar espaco dos icones dos botoes
+- [x] Texto SignUp deve enviar para tela de SigUp ao clicar 
+
+- Login Form
+- [x] Titulo da tela
+- [x] O hint dos campos estao muito pra dentro
+- [x] Testar colcar campos em box
+- [x] Toolbar esta deslizando junto com os campos
 
 - Signup
-- [ ] Titulo da tela
-- [ ] Hint muito longe do inicio
-- [ ] Toolbar esta deslizando junto com os campos
+- [x] Titulo da tela ir para toolbar removendo de dentro do fragment
+- [x] Toolbar esta deslizando junto com os campos
 
-- Home
-- [ ] Passar texto pro topo centralizado com margin de 12dp
-- [ ] Inserir toolbar
-- [ ] Titulo na toolbar 
-- [ ] Passar o recycleview pra Home
-- [ ] Ao fazer scroll top a toolbar some
-- [ ] Ao fazer scroll down a toolbar aparece
+
+- [x] Testar colcar campos em box
 
 - RecycleView
-- [ ] Deixa de existir
-- [ ] Itens card fundo cinza claro
+- [x] Titulo deve representar melhor o que a tela faz
 https://docs.microsoft.com/pt-br/xamarin/android/user-interface/controls/card-view-images/01-cardview-example.png
-- [ ] Imagem no topo
-- [ ] Nome no bottom da imagem com fundo preto e transparencia de 80% (opacidade)
-- [ ] Em baixo os outros campos em cor preta fundo branco
-- [ ] adicionar no item texto caixa alta SHARE (Abre apps com plain-text)
-- [ ] Adicionar no item texto caixa alta detalhe
+- [x] Imagem no topo
+- [x] Nome no bottom da imagem com fundo preto e transparencia de 80% (opacidade)
+- [x] Remover os ":" e deixar label em negrito e valor em normal
+- [x] Em baixo os outros campos em cor preta fundo branco
 
 - Detalhes do item clicado
-- [ ] Manter collapse toolbar
-- [ ] Remover fundo do card
-- [ ] Titulo na base da imassim assim como feito
+- [x] Manter collapse toolbar
+- [x] Remover fundo do card
+- [x] Titulo na base da imassim assim como feito
 - [ ] A imagem deve animar saindo da do item clicado e voar para tela de detalhe do pedido e expandir
 https://www.youtube.com/watch?v=KuV8Y9-T-oA
-- [ ] A tela de ser a mesma configuracao do card, soh que nao sera um card, da lista como na foto
+- [x] A tela de ser a mesma configuracao do card, soh que nao sera um card, da lista como na foto
 https://docs.microsoft.com/pt-br/xamarin/android/user-interface/controls/card-view-images/01-cardview-example.png
-- [ ] Mostrar todos os dados que temos, assim como ja esta implementado
-- [ ] Espacmento do texto nas laterais deve ser de 16/18 dp, mas somente no texto a imagem fica borda a borda
-- [ ] No bottom da tela teremos os dois botoes(Texto) Date e Map
-- [ ] Aumentar tamanho do collpse toolbar para 40% da tela (veja se da pra fazer isso)
+- [x] Mostrar todos os dados que temos, assim como ja esta implementado
+- [x] Espacmento do texto nas laterais deve ser de 16/18 dp, mas somente no texto a imagem fica borda a borda
+- [x] No bottom da tela teremos os dois botoes(Texto) Date e Map
+- [ ] Trocar icone logout por camera
+- [ ] Ao clicar no icone da camera na toolbar devemos dar opcao, atraves de um dialog, de tirar foto ou carregar imagem
+- [ ] Colocar botao de adicionar imagem do celular
+- [x] Aumentar tamanho do collpse toolbar para 40% da tela (veja se da pra fazer isso)
 - [ ] Caso o usuario ja tenha escolhido a data de nascimento, desabilitar o botão, porém continua mostrar (cinza claro)
+- [ ] Atualizar o objeto Usuario com os dados de nascimento pegos no Date Picker 
+- [x] adicionar no item texto caixa alta SHARE (Abre apps com plain-text)
+https://developer.android.com/training/sharing/send
 
 - Map
-- [ ] Adicionar toolbar
-- [ ] Nome da tela na toolbar
+- [x] Adicionar toolbar
+- [x] Nome da tela na toolbar Map
+- [ ] Adicionar movimentacao de camera
+- [ ] Ao clicar no map, checar permissao
+- [ ] Ao abrir o map dar zoom na localizacao atual do usuario
+- [ ] Adicionar um botao flutuante "OK"
+- [ ] Ao clicar clicar e segurar no marcador ele deixa alterar a localizacao
+- [ ] Ao clicar em "OK" vamos salva no usuario o Endereco do usuario com todos os dados que temos atualmente
 
 - Bugs and Fixes
 - [ ] Login diminuir tamanho de logo
@@ -173,6 +182,6 @@ https://docs.microsoft.com/pt-br/xamarin/android/user-interface/controls/card-vi
 * Multithread
 * Coroutines
 * SOLID
-* Clean Code
+* Clean Code    
 * Fazer um recycleView com tipos de View diferentes. Usando `getItemViewType` 
     Artigo top sobre assunto https://betterprogramming.pub/android-recyclerview-with-kotlin-sealed-classes-6d2985aac3e5

@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Geo(
-    val lat: Double,
-    val lng: Double
+    var lat: Double?,
+    var lng: Double?
 ): Parcelable
